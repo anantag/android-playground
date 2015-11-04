@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,5 +40,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This method is called when the order button is clicked.
+     */
+    public void submitOrder(View view) {
+        TextView quantityTextView = (TextView) findViewById(
+                R.id.quantity_text_view);
+        int currentOrder = Integer.parseInt(quantityTextView.getText().toString());
+        display(currentOrder);
+        currentOrder = Integer.parseInt(quantityTextView.getText().toString());
+        displayPrice(currentOrder * 5);
+    }
+
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void display(int number) {
+        TextView quantityTextView = (TextView) findViewById(
+                R.id.quantity_text_view);
+        number = number + 1;
+        quantityTextView.setText("" + number);
+    }
+
+    /**
+     * This method displays the given price on the screen.
+     */
+    private void displayPrice(int number) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 }
