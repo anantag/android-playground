@@ -18,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // Reset to default values when the app is opened for the first time.
+        TextView quantityView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityView.setText("" + 0); //TODO - Add constants for default value.
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(NumberFormat.getCurrencyInstance().format(0)); //TODO - Add constants for default value.
     }
 
     @Override
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
